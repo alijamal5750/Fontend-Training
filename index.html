@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Frontend Core Mastery</title>
+
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Header
+    ========================== -->
+    <header>
+
+        <h1>Frontend Core</h1>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Orders</a>
+            <a href="#">Customers</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         Main Content
+    ========================== -->
+    <main>
+
+        <!-- Products Section -->
+        <section>
+
+            <h2>Products</h2>
+
+            <p>
+                Manage products from this page.
+            </p>
+
+
+            <!-- Product Form -->
+            <form>
+
+                <div>
+                    <label for="productName">
+                        Product Name
+                    </label>
+
+                    <input
+                        id="productName"
+                        name="productName"
+                        class="form-control"
+                        type="text"
+                        required
+                        minlength="2"
+                        maxlength="100">
+                </div>
+
+
+                <div>
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        id="price"
+                        name="price"
+                        class="form-control"
+                        type="number"
+                        required
+                        min="0"
+                        step="0.01">
+                </div>
+
+
+                <div>
+                    <label for="quantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        id="quantity"
+                        name="quantity"
+                        class="form-control"
+                        type="number"
+                        required
+                        min="1">
+                </div>
+
+
+                <button type="submit">
+                    Add Product
+                </button>
+
+                <button type="reset">
+                    Reset
+                </button>
+
+            </form>
+
+
+            <!-- Product Table -->
+            <h3>Product List</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable">
+
+                    <tr data-product-id="1">
+
+                        <td>iPhone</td>
+
+                        <td>$1000</td>
+
+                        <td>2</td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="edit-button"
+                                data-product-id="1">
+                                Edit
+                            </button>
+
+                            <button
+                                type="button"
+                                class="delete-button"
+                                data-product-id="1">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr data-product-id="2">
+
+                        <td>MacBook</td>
+
+                        <td>$2000</td>
+
+                        <td>1</td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="edit-button"
+                                data-product-id="2">
+                                Edit
+                            </button>
+
+                            <button
+                                type="button"
+                                class="delete-button"
+                                data-product-id="2">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+    <footer>
+
+        <p>
+            Frontend Core Mastery
+        </p>
+
+    </footer>
+
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
