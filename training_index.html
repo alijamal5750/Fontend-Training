@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Frontend Core Mastery</title>
+
+   
+</head>
+
+<body>
+
+    <header>
+    
+        <div class="brand">
+            Frontend Core
+        </div>
+       
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Orders</a>
+            <a href="#">Customers</a>
+        </nav>
+
+        <div class="user-actions">
+            <button type="button">
+                Login
+            </button>
+
+            <button type="button">
+                Signup
+            </button>
+        </div>
+   </header>
+
+   <main>
+    
+    <div class="page-header">
+        <div class="first-row">
+            <h1>Products</h1>
+           
+                <button class="button-add-product">
+                    Add New Product
+                </button>
+        </div>
+        <p>all info are here</p>
+    </div>
+
+    <div class="form-container">
+    <div class="first-row-form">
+    <div class="form-group">
+        <label for="productname">
+            Product Name
+        </label>
+        <input type="text"
+         id="productname"
+         name="productname"
+         class="form-control"
+         />
+    </div>
+    <div class="form-group">
+        <label for="productprice">
+            Price
+        </label>
+        <input type="number"
+         id="productprice"
+         name="productprice"
+         class="form-control"
+         />
+    </div>
+     <div class="form-group">
+        <label for="productQuantity">
+            Quantity
+        </label>
+        <input type="number"
+         id="productQuantity"
+         name="productQuantity"
+         class="form-control"
+         />
+    </div>
+    </div>
+
+    <div class="second-row-form">
+        <button>Add Product</button>
+        <button>Reset</button>
+    </div>
+
+    </div>
+
+    <div class="table-info">
+        
+            
+        <div class="table-info-header">
+            <h1>Product List</h1>
+            
+            <div class="table-tools">
+<input placeholder="Search products" />
+            <select>
+                <option>All Products</option>
+                <option>Laptop</option>
+                <option>Iphone</option>
+            </select>
+            </div>
+            
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <tr data-product-id="1">
+                        <td>Iphone</td>
+                        <td>$1000</td>
+                        <td>Quantity</td>
+                       <div class="td-action">
+                            <td>
+                        <button data-product-id="1">Edit</button>
+                        <button data-product-id="1">Delete</button>
+                        </td>
+                        </div>
+                    </tr>
+                    <tr data-product-id="2">
+                        <td>Iphone</td>
+                        <td>$1000</td>
+                        <td>Quantity</td>
+                        <div class="td-action">
+                            <td>
+                        <button data-product-id="2">Edit</button>
+                        <button data-product-id="2">Delete</button>
+                        </td>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+   </main>
+   
+
+
+    <footer class="footer">
+
+        <p>Course Training</p>
+
+    </footer>
+
+</body>
+
+</html>
+
+
+<style>
+    *,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.5;
+
+    background-color: #f5f6f8;
+    color: #222;
+}
+
+header{
+    background-color:white;
+    display:flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-bottom:1px solid #ddd;
+        
+}
+
+.brand{
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+.nav-links{
+    display: flex;
+    gap:1rem;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.user-actions{
+    display: flex;
+    gap : 0.5rem;
+}
+
+main{
+    width: 100%;
+     max-width: 1200px;
+
+    margin-inline: auto;
+
+    padding: 2rem;
+}
+
+.page-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.first-row{
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.first-row h1{
+    font-size:1.5rem;
+}
+
+.page-header p{
+    margin : 0;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    border : 0.5px solid rgb(158, 152, 152);
+    border-radius: 5px;
+    padding:1rem;
+    gap:1rem;
+    background-color:white;
+}
+
+.first-row-form{
+    display:flex;
+    flex-direction: row;
+    gap:1rem;
+}
+
+.form-group{
+    flex:1;
+}
+
+.second-row-form{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+}
+
+.form-control{
+    width: 100%;
+    padding:1rem;
+    border:0.5px solid rgb(158, 152, 152);
+    border-radius: 10px;
+}
+
+.table-info{
+    margin-top:1rem;
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    border : 0.5px solid rgb(158, 152, 152);
+    border-radius: 5px;
+    background-color:white;
+}
+
+.table-info-header{
+    display:flex;
+    flex-direction: row;
+    padding:1rem;
+    gap:0.5rem;
+    justify-content: space-between;
+}
+
+.table-info-header h1{
+    margin:0;
+}
+
+.table-tools{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    
+}
+
+.table-tools input,.table-tools select{
+    width: 100%;
+    border:0.5px solid rgb(158, 152, 152);
+    border-radius: 10px;
+}
+
+table{
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+th,td{
+ padding: 0.875rem;
+
+    text-align: start;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+.td-actions{
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+}
+
+footer{
+text-align: center;
+}
+
+</style>
