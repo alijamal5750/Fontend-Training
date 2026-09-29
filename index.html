@@ -21,17 +21,32 @@
     ========================== -->
     <header>
 
-        <h1>Frontend Core</h1>
+        <h1>Frontend
+            <span style="color: blue;">Core</span>
+            Mastery
+        </h1>
 
         <nav>
             <a href="#">Home</a>
-            <a href="#">Products</a>
+            <div>
+                <a href="#">Products</a>
+            </div>
             <a href="#">Orders</a>
             <a href="#">Customers</a>
         </nav>
 
     </header>
 
+    <!-- =========================
+         OverFlow
+    ========================== -->
+    <div class="o-overflow">
+        <p>overflowbkbkjbjbjkbjkbjkbkjbkbjbjbkjbkjbjkydtdytdytdty</p>
+        <p>overflow</p>
+        <p>overflow</p>
+        <p>overflow</p>
+
+    </div>
 
     <!-- =========================
          Main Content
@@ -96,9 +111,8 @@
                         required
                         min="1">
                 </div>
-
-
-                <button type="submit">
+           
+  <button type="submit" class="save-button">
                     Add Product
                 </button>
 
@@ -110,11 +124,18 @@
 
 
             <!-- Product Table -->
-            <h3>Product List</h3>
+               <!-- =========================
+         Card
+    ========================== -->
+    <div class="card">
+        product
+
+        <button class="button-close">X</button>
+    </div>
 
             <table>
 
-                <thead>
+                <thead class="table-header">
 
                     <tr>
                         <th>Name</th>
@@ -188,6 +209,9 @@
 
     </main>
 
+    <button class="button-welcome" onclick="alert('Welcome to Frontend Core Mastery!')">
+        Click Me!
+    </button>
 
     <!-- =========================
          Footer
