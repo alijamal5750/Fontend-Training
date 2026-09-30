@@ -1,25 +1,22 @@
 /* =========================================
-   State
+   STATE
 ========================================= */
 
 const state = {
 
     products: [
-
         {
             id: "1",
             name: "Iphone",
             price: 1000,
             quantity: 10
         },
-
         {
             id: "2",
             name: "Laptop",
             price: 500,
             quantity: 2
         }
-
     ],
 
     selectedProductId: null,
@@ -27,12 +24,11 @@ const state = {
     search: "",
 
     filter: "all"
-
 };
 
 
 /* =========================================
-   DOM Elements
+   DOM REFERENCES
 ========================================= */
 
 const elements = {
@@ -60,18 +56,11 @@ const elements = {
 
     productFilter:
         document.querySelector("#productFilter")
-
 };
 
 
 /* =========================================
-   Escape HTML
-
-   Needed because product.name is inserted
-   inside innerHTML.
-
-   User/API/database strings should not be
-   treated as HTML markup.
+   ESCAPE HTML
 ========================================= */
 
 function escapeHtml(value) {
@@ -82,12 +71,11 @@ function escapeHtml(value) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
-
 }
 
 
 /* =========================================
-   Create Product
+   CREATE PRODUCT
 ========================================= */
 
 function createProduct(
@@ -97,51 +85,41 @@ function createProduct(
 ) {
 
     return {
+        id: crypto.randomUUID(),
 
-        id:
-            crypto.randomUUID(),
+        name: name.trim(),
 
-        name:
-            name.trim(),
+        price: Number(price),
 
-        price:
-            Number(price),
-
-        quantity:
-            Number(quantity)
-
+        quantity: Number(quantity)
     };
-
 }
 
 
 /* =========================================
-   Add Product
+   ADD PRODUCT
 ========================================= */
 
 function addProduct(product) {
 
     state.products.push(product);
-
 }
 
 
 /* =========================================
-   Find Product
+   GET PRODUCT
 ========================================= */
 
 function getProductById(id) {
 
     return state.products.find(
-        product =>
-            product.id === id
+        product => product.id === id
     );
-
 }
 
 
 /* =========================================
-   Update Product
+   UPDATE PRODUCT
 ========================================= */
 
 function updateProduct(
@@ -156,9 +134,7 @@ function updateProduct(
 
 
     if (!product) {
-
         return false;
-
     }
 
 
@@ -173,12 +149,11 @@ function updateProduct(
 
 
     return true;
-
 }
 
 
 /* =========================================
-   Delete Product
+   DELETE PRODUCT
 ========================================= */
 
 function deleteProduct(id) {
@@ -188,12 +163,11 @@ function deleteProduct(id) {
             product =>
                 product.id !== id
         );
-
 }
 
 
 /* =========================================
-   Read Product Form
+   READ FORM
 ========================================= */
 
 function readProductForm() {
@@ -201,32 +175,25 @@ function readProductForm() {
     return {
 
         name:
-            elements
-                .productName
+            elements.productName
                 .value
                 .trim(),
 
         price:
             Number(
-                elements
-                    .productPrice
-                    .value
+                elements.productPrice.value
             ),
 
         quantity:
             Number(
-                elements
-                    .productQuantity
-                    .value
+                elements.productQuantity.value
             )
-
     };
-
 }
 
 
 /* =========================================
-   Fill Product Form
+   FILL FORM
 ========================================= */
 
 function fillProductForm(product) {
@@ -239,12 +206,11 @@ function fillProductForm(product) {
 
     elements.productQuantity.value =
         product.quantity;
-
 }
 
 
 /* =========================================
-   Enter Edit Mode
+   ENTER EDIT MODE
 ========================================= */
 
 function enterEditMode(product) {
@@ -256,21 +222,17 @@ function enterEditMode(product) {
     fillProductForm(product);
 
 
-    elements
-        .submitProductButton
+    elements.submitProductButton
         .textContent =
             "Update Product";
 
 
-    elements
-        .productName
-        .focus();
-
+    elements.productName.focus();
 }
 
 
 /* =========================================
-   Exit Edit Mode
+   EXIT EDIT MODE
 ========================================= */
 
 function exitEditMode() {
@@ -279,31 +241,28 @@ function exitEditMode() {
         null;
 
 
-    elements
-        .submitProductButton
+    elements.submitProductButton
         .textContent =
             "Add Product";
-
 }
 
 
 /* =========================================
-   Reset Product Form
+   RESET FORM
 ========================================= */
 
 function resetProductForm() {
 
     elements.productForm.reset();
 
-    elements.productName.focus();
+    exitEditMode();
 
+    elements.productName.focus();
 }
 
 
 /* =========================================
-   Get Products To Display
-
-   Search + filter are applied here.
+   GET VISIBLE PRODUCTS
 ========================================= */
 
 function getVisibleProducts() {
@@ -329,7 +288,6 @@ function getVisibleProducts() {
                         .toLowerCase()
                         .includes(search)
             );
-
     }
 
 
@@ -345,27 +303,15 @@ function getVisibleProducts() {
                     state.filter
                         .toLowerCase()
             );
-
     }
 
 
     return products;
-
 }
 
 
 /* =========================================
-   Render Products
-
-   State
-      ↓
-   map()
-      ↓
-   HTML
-      ↓
-   innerHTML
-      ↓
-   DOM
+   RENDER PRODUCTS
 ========================================= */
 
 function renderProducts() {
@@ -382,7 +328,7 @@ function renderProducts() {
 
                 <td
                     colspan="4"
-                    style="text-align: center;">
+                    style="text-align:center;">
 
                     No products found
 
@@ -393,7 +339,6 @@ function renderProducts() {
         `;
 
         return;
-
     }
 
 
@@ -405,23 +350,17 @@ function renderProducts() {
                 data-product-id="${product.id}">
 
                 <td>
-
                     ${escapeHtml(product.name)}
-
                 </td>
 
 
                 <td>
-
                     $${product.price}
-
                 </td>
 
 
                 <td>
-
                     ${product.quantity}
-
                 </td>
 
 
@@ -457,15 +396,20 @@ function renderProducts() {
         `).join("")}
 
     `;
-
 }
 
 
 /* =========================================
-   Form Submit Event
+   SUBMIT EVENT
 ========================================= */
 
 function handleProductSubmit(event) {
+
+    /*
+        Without this:
+        browser performs normal form submit
+        and page may reload/navigate.
+    */
 
     event.preventDefault();
 
@@ -474,18 +418,15 @@ function handleProductSubmit(event) {
         readProductForm();
 
 
-    /* Extra JS validation */
+    /* Validation */
 
     if (!product.name) {
 
-        alert(
-            "Product name is required"
-        );
+        alert("Product name is required");
 
         elements.productName.focus();
 
         return;
-
     }
 
 
@@ -494,14 +435,11 @@ function handleProductSubmit(event) {
         product.price < 0
     ) {
 
-        alert(
-            "Price is invalid"
-        );
+        alert("Price is invalid");
 
         elements.productPrice.focus();
 
         return;
-
     }
 
 
@@ -510,18 +448,15 @@ function handleProductSubmit(event) {
         product.quantity < 1
     ) {
 
-        alert(
-            "Quantity is invalid"
-        );
+        alert("Quantity is invalid");
 
         elements.productQuantity.focus();
 
         return;
-
     }
 
 
-    /* Edit */
+    /* UPDATE */
 
     if (state.selectedProductId) {
 
@@ -531,41 +466,49 @@ function handleProductSubmit(event) {
             product.price,
             product.quantity
         );
-
     }
 
-    /* Add */
+    /* ADD */
 
     else {
 
-        addProduct(
+        const newProduct =
             createProduct(
                 product.name,
                 product.price,
                 product.quantity
-            )
-        );
+            );
 
+
+        addProduct(newProduct);
     }
 
 
     resetProductForm();
 
     renderProducts();
-
 }
 
 
 /* =========================================
-   Table Click Event
+   TABLE CLICK EVENT
 
-   Event delegation:
-
-   One listener on tbody handles
-   Edit + Delete for every dynamic row.
+   EVENT DELEGATION
 ========================================= */
 
 function handleProductTableClick(event) {
+
+    /*
+        event.target:
+
+        the exact element that was clicked.
+
+        closest():
+
+        starts from event.target and moves
+        UP through parents until it finds
+        button[data-action].
+    */
 
     const button =
         event.target.closest(
@@ -573,10 +516,19 @@ function handleProductTableClick(event) {
         );
 
 
+    /*
+        User may click:
+        td
+        tr
+        empty table area
+        etc.
+
+        In those cases no action button
+        will be found.
+    */
+
     if (!button) {
-
         return;
-
     }
 
 
@@ -588,43 +540,36 @@ function handleProductTableClick(event) {
         button.dataset.productId;
 
 
-    /* Edit */
+    /* EDIT */
 
     if (action === "edit") {
 
         const product =
-            getProductById(
-                productId
-            );
+            getProductById(productId);
 
 
         if (!product) {
-
             return;
-
         }
 
 
         enterEditMode(product);
 
         return;
-
     }
 
 
-    /* Delete */
+    /* DELETE */
 
     if (action === "delete") {
 
-        deleteProduct(
-            productId
-        );
+        deleteProduct(productId);
 
 
         /*
-            If we were editing the same
-            product that was deleted,
-            reset the form.
+            If user was editing the same
+            product that was just deleted,
+            leave edit mode.
         */
 
         if (
@@ -633,19 +578,16 @@ function handleProductTableClick(event) {
         ) {
 
             resetProductForm();
-
         }
 
 
         renderProducts();
-
     }
-
 }
 
 
 /* =========================================
-   Search Event
+   SEARCH EVENT
 ========================================= */
 
 function handleSearchInput(event) {
@@ -655,12 +597,11 @@ function handleSearchInput(event) {
 
 
     renderProducts();
-
 }
 
 
 /* =========================================
-   Filter Event
+   FILTER EVENT
 ========================================= */
 
 function handleProductFilterChange(event) {
@@ -670,25 +611,21 @@ function handleProductFilterChange(event) {
 
 
     renderProducts();
-
 }
 
 
 /* =========================================
-   Form Reset Event
+   RESET EVENT
 ========================================= */
 
-function handleProductFormReset() {
+function handleProductReset() {
 
     exitEditMode();
-
 }
 
 
 /* =========================================
-   Register Events
-
-   We register each listener ONCE.
+   REGISTER EVENTS
 ========================================= */
 
 function registerEvents() {
@@ -703,7 +640,7 @@ function registerEvents() {
     elements.productForm
         .addEventListener(
             "reset",
-            handleProductFormReset
+            handleProductReset
         );
 
 
@@ -726,12 +663,11 @@ function registerEvents() {
             "change",
             handleProductFilterChange
         );
-
 }
 
 
 /* =========================================
-   Start Application
+   START APPLICATION
 ========================================= */
 
 registerEvents();

@@ -95,7 +95,7 @@
         <div class="form-container">
 
 
-            <form id="productForm">
+            <form productForm>
 
 
                 <div class="first-row-form">
@@ -107,7 +107,7 @@
                             Product Name
                         </label>
 
-                        <input type="text" id="productname" name="productname" class="form-control">
+                        <input type="text" id="productname" name="productname" class="form-control" required>
 
                     </div>
 
@@ -118,7 +118,8 @@
                             Price
                         </label>
 
-                        <input type="number" id="productprice" name="productprice" class="form-control">
+                        <input type="number" id="productprice" name="productprice" class="form-control" required
+                            min="0">
 
                     </div>
 
@@ -129,7 +130,8 @@
                             Quantity
                         </label>
 
-                        <input type="number" id="productQuantity" name="productQuantity" class="form-control">
+                        <input type="number" id="productQuantity" name="productQuantity" class="form-control" required
+                            min="1">
 
                     </div>
 
@@ -141,16 +143,11 @@
                 <div class="second-row-form">
 
                     <button id="submitProductButton" type="submit">
-
                         Add Product
-
                     </button>
 
-
-                    <button id="resetProductButton" type="reset">
-
+                    <button type="reset">
                         Reset
-
                     </button>
 
                 </div>
@@ -177,19 +174,18 @@
 
                     <input id="productSearch" type="search" placeholder="Search products">
 
-
                     <select id="productFilter">
 
                         <option value="all">
                             All Products
                         </option>
 
-                        <option value="Laptop">
-                            Laptop
-                        </option>
-
                         <option value="Iphone">
                             Iphone
+                        </option>
+
+                        <option value="Laptop">
+                            Laptop
                         </option>
 
                     </select>
